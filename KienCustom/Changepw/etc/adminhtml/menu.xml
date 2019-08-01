@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>	
+		<add id="KienCustom_Changepw::kien" 
+      	title="Kien" 
+      	translate="title" 
+      	module="KienCustom_Changepw" 
+      	sortOrder="51" 
+      	dependsOnModule="KienCustom_Changepw"
+      	resource="KienCustom_Changepw::kien"/>
+
+        <add id="KienCustom_Changepw::cu" 
+      	title="Kien: List Customer " 
+      	translate="title" 
+      	module="KienCustom_Changepw" 
+      	parent="KienCustom_Changepw::kien" 
+      	sortOrder="9"
+        action="changepw/index/listcus"
+      	dependsOnModule="KienCustom_Changepw" 
+      	resource="KienCustom_Changepw::cu"/>
+		  
+		<add id="KienCustom_Changepw::admin" 
+      	title="Admin: List Customer " 
+      	translate="title" 
+      	module="KienCustom_Changepw" 
+      	parent="KienCustom_Changepw::kien" 
+      	sortOrder="9"
+        action="customer/index/index"
+      	dependsOnModule="KienCustom_Changepw" 
+      	resource="KienCustom_Changepw::admin"/>
+
+        <add id="KienCustom_Changepw::create" 
+      	title="Create New Customer" 
+      	translate="title" 
+      	module="KienCustom_Changepw" 
+      	parent="KienCustom_Changepw::kien" 
+      	sortOrder="9"
+        action="changepw/index/create"
+      	dependsOnModule="KienCustom_Changepw" 
+      	resource="KienCustom_Changepw::create"/>
+        
+    </menu>
+</config>

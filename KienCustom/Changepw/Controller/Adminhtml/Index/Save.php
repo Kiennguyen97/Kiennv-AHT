@@ -29,14 +29,22 @@ class Save extends \Magento\Backend\App\Action
     public function execute()
     {
         $this->resultRedirect = $this->resultRedirectFactory->create();
-		$this->resultRedirect->setPath('customer/*/');
+		
         $data = $this->getRequest()->getPostValue();
         $id = $data['entity_id'];  //TODO: lấy data trong primaryFieldName 
-        $password = $data['password'];
-        $customer = $this->customerFactory->create();
-        $customer = $customer->load($id);
-        $customer = $customer->changePassword($password); //TODO: hàm changePassword (String) có trong model/Customer
-        $customer->save();
+        if($id){
+            $this->resultRedirect->setPath('customer/*/');
+            $password = $data['password'];
+            $customer = $this->customerFactory->create();
+            $customer = $customer->load($id);
+            $customer = $customer->changePassword($password);
+            $customer->save();
+        }else{
+            $this->resultRedirect->setPath('*/*/listcus');
+            $customer = $this->customerFactory->create();
+            $customer->setData($data);
+            $customer->save();
+        }
         return $this->resultRedirect;
     }
 }

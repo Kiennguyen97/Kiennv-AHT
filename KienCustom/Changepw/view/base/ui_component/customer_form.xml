@@ -3,7 +3,7 @@
     
     <settings>
         <buttons>
-            <button name="Kien" class="KienCustom\Changepw\Block\Adminhtml\Edit\ChangePasswordButton"/>
+            <button name="Kienchangepwbutton" class="KienCustom\Changepw\Block\Adminhtml\Edit\ChangePasswordButton"/>
         </buttons>
     </settings>
 </form>

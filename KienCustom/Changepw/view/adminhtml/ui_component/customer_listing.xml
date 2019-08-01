@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    
+    <settings>
+        <buttons>
+            <button name="kienadd">
+                <url path="changepw/index/create"/>
+                <class>action-secondary</class>
+                <label translate="true">KienCreateNewCustomer</label>
+            </button>
+        </buttons>
+    </settings>
     <columns name="customer_columns">
         <actionsColumn name="change_pass" class="KienCustom\Changepw\Ui\Component\Listing\Columns\ChangePass">
             <argument name="data" xsi:type="array">
