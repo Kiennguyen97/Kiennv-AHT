@@ -14,6 +14,7 @@ class Save extends \Magento\Backend\App\Action
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
         \Magento\Customer\Model\CustomerFactory $customerFactory,
+        \Magento\Customer\Model\ResourceModel\CustomerRepository $customerRepository,
         \Magento\Framework\Encryption\EncryptorInterface $encryptor,
         \Magento\Framework\Controller\ResultFactory $result
     )

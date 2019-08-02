@@ -13,11 +13,11 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         $name,
         $primaryFieldName,
         $requestFieldName,
-        CollectionFactory $contactCollectionFactory,
+        CollectionFactory $customerCollectionFactory,
         array $meta = [],
         array $data = []
     ){
-        $this->collection = $contactCollectionFactory->create();
+        $this->collection = $customerCollectionFactory->create();
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
 
@@ -29,9 +29,9 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 
         $items = $this->collection->getItems();
 
-        foreach($items as $contact)
+        foreach($items as $customer)
         {
-            $this->_loadedData[$contact->getId()] = $contact->getData();
+            $this->_loadedData[$customer->getId()] = $customer->getData();
         }
 
         return $this->_loadedData;

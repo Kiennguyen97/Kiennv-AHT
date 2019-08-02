@@ -12,7 +12,7 @@
         </item>
         <item name="template" xsi:type="string">templates/form/collapsible</item>
         <item name="buttons" xsi:type="array">
-            <item name="back" xsi:type="string">KienCustom\Changepw\Block\Adminhtml\MyCustomer\Edit\BackBut</item>
+            <item name="back" xsi:type="string">KienCustom\Changepw\Block\Adminhtml\MyCustomer\Edit\BackButton</item>
             <item name="save" xsi:type="string">KienCustom\Changepw\Block\Adminhtml\MyCustomer\Edit\SaveButton</item>
         </item>
     </argument>

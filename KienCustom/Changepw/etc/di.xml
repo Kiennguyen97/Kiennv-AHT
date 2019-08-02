@@ -24,8 +24,8 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="changepass_form_data_source" xsi:type="string">KienCustomer</item>
-                <item name="create_form_data_source" xsi:type="string">KienCustomer</item>
+                <!-- <item name="changepass_form_data_source" xsi:type="string">KienCustomer</item> -->
+                <!-- <item name="create_form_data_source" xsi:type="string">KienCustomer</item> -->
                 <item name="listcus_listing_data_source" xsi:type="string">KienCustomer</item>
             </argument>
         </arguments>

@@ -36,9 +36,67 @@
             </argument>
         </argument>
     </dataSource>
-    
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <exportButton name="export_button"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters"/>
+        <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to delete the selected customers?</message>
+                        <title translate="true">Delete items</title>
+                    </confirm>
+                    <url path="customer/index/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+            <action name="subscribe">
+                <settings>
+                    <url path="customer/index/massSubscribe"/>
+                    <type>subscribe</type>
+                    <label translate="true">Subscribe to Newsletter</label>
+                </settings>
+            </action>
+            <action name="unsubscribe">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to unsubscribe the selected customers from the newsletter?</message>
+                        <title translate="true">Unsubscribe from Newsletter</title>
+                    </confirm>
+                    <url path="customer/index/massUnsubscribe"/>
+                    <type>unsubscribe</type>
+                    <label translate="true">Unsubscribe from Newsletter</label>
+                </settings>
+            </action>
+            <action name="assign_to_group">
+                <settings>
+                    <type>assign_to_group</type>
+                    <label translate="true">Assign a Customer Group</label>
+                    <actions class="Magento\Customer\Ui\Component\MassAction\Group\Options"/>
+                </settings>
+            </action>
+            <action name="edit">
+                <settings>
+                    <callback>
+                        <target>editSelected</target>
+                        <provider>customer_listing.customer_listing.customer_columns_editor</provider>
+                    </callback>
+                    <type>edit</type>
+                    <label translate="true">Edit</label>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging"/>
+    </listingToolbar>
     <!-- khai báo các cột của Grid -->
-    <columns name="listcus_columns" class="Magento\Customer\Ui\Component\Listing\Columns">
+    <columns name="listcus_columns" >
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="storageConfig" xsi:type="array">
@@ -55,6 +113,7 @@
                 </item>
             </item>
         </argument>
+
         <selectionsColumn name="ids">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -117,33 +176,25 @@
                 <visible>false</visible>
             </settings>
         </column>
-	<!-- cột Comment -->
-        <!-- <column name="comment">
+        <actionsColumn name="change_pass" class="KienCustom\Changepw\Ui\Component\Listing\Columns\ChangePass">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="visible" xsi:type="boolean">true</item>
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">listcus_columns</item>
-                    <item name="dataScope" xsi:type="string">comment</item>
-                    <item name="filter" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Comment</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">false</item>
-                    </item>
+                    <item name="indexField" xsi:type="string">entity_id</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="label" xsi:type="string" translate="true">Change Password</item>
+                    <item name="sortOrder" xsi:type="number">300</item>
                 </item>
             </argument>
-        </column> -->
-	<!-- cột Action -->
-        <!-- <actionsColumn name="actions" class="Blog\Post\Ui\Component\Listing\Column\KienCustomerActions">
+        </actionsColumn>
+        <actionsColumn name="actions" class="KienCustom\Changepw\Ui\Component\Listing\Columns\Actions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="resizeEnabled" xsi:type="boolean">false</item>
                     <item name="resizeDefaultWidth" xsi:type="string">107</item>
-                    <item name="indexField" xsi:type="string">contacts_id</item>
+                    <item name="indexField" xsi:type="string">entitys_id</item>
                 </item>
             </argument>
-        </actionsColumn> -->
+        </actionsColumn>
     </columns>
 
 </listing>
