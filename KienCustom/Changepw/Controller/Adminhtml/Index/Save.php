@@ -33,15 +33,15 @@ class Save extends \Magento\Backend\App\Action
 		
         $data = $this->getRequest()->getPostValue();
         $id = $data['entity_id'];  //TODO: lấy data trong primaryFieldName 
+        $this->resultRedirect->setPath('*/*/listcus');
+
         if($id){
-            $this->resultRedirect->setPath('customer/*/');
             $password = $data['password'];
             $customer = $this->customerFactory->create();
             $customer = $customer->load($id);
             $customer = $customer->changePassword($password);
             $customer->save();
         }else{
-            $this->resultRedirect->setPath('*/*/listcus');
             $customer = $this->customerFactory->create();
             $customer->setData($data);
             $customer->save();

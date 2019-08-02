@@ -47,10 +47,10 @@ class Delete extends \Magento\Backend\App\Action
         {
             $this->messageManager->addError(__('Error while trying to delete customer'));
             $resultRedirect = $this->resultRedirectFactory->create();
-            return $resultRedirect->setPath('*/*/index', array('_current' => true));
+            return $resultRedirect->setPath('*/*/listcus', array('_current' => true));
         }
 
         $resultRedirect = $this->resultRedirectFactory->create();
-        return $resultRedirect->setPath('*/*/index', array('_current' => true));
+        return $resultRedirect->setPath('*/*/listcus', array('_current' => true));
     }
 }
