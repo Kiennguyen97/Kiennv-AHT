@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="admin">
-        <route frontName="payment" id="payment">
-            <module name="KienCustom_Payment" />
+        <route frontName="kiwidget" id="kiwidget">
+            <module name="KienCustom_Kiwidget" />
         </route>
     </router>
 </config>

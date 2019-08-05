@@ -1,5 +1,5 @@
 <?php \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    "KienCustom_Payment",
+    "KienCustom_Kiwidget",
     __DIR__
 );

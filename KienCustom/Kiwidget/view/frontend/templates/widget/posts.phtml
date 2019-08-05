@@ -1,0 +1,7 @@
+<?php if($block->getData('posts')): ?>
+	<h2 class='posts'><?php echo $block->getData('posts'); ?></h2> 
+    <p>ở trên là lấy dữ liệu của parameter có name là posts.</p>
+    <!-- trong lúc thêm vào home page mình đã điền vào param là chào bạn -->
+<?php endif; ?>
+<?php 
+var_dump($block->getParam());
