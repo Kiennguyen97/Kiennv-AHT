@@ -1,0 +1,19 @@
+<?php echo ("EDIT");?>
+<div class="container">
+	<form method='POST' action="/magento2/blog/index/cussave">
+	    <div class="form-group">
+	        <label for="name">Name</label>
+	        <input type="text" class="form-control" id="name" placeholder="Enter a name" name="name" value="<?php $cus = $block->getCustomer(); echo $cus->getName(); ?>">
+	    </div>
+		<div class="form-group">
+	        <label for="email">Email</label>
+	        <input type="text" class="form-control" id="email" placeholder="Enter Email" name="email" value="<?php if (isset($cus['email'])) echo $cus->getEmail();?>">
+	    </div>
+	    <div class="form-group">
+	        <label for="password">Password</label>
+	        <input type="text" class="form-control" id="password" placeholder="Enter your password" name="password" value="<?php if (isset($cus['password_hash'])) echo $cus->getPasswordHash();?>">
+	    </div>
+	    
+	    <button type="submit" class="btn btn-primary" name="editbtn" value="<?php echo $cus->getId()?>">Submit</button>
+	</form>
+</div>

@@ -1,0 +1,51 @@
+<?php
+/**
+ *  @var \AHT\Blog\Block\Index $block
+ */
+// echo $block->getBlogInfo();
+
+?> 
+<table class="table table-bordered table-striped table-hover table-reponsive scroll">
+    <thead>
+    	<a href="<?php echo $block->getBaseUrl(); ?>blog/index/create" class="btn btn-primary btn-xs pull-right">Create New Post</a>
+	  	<tr>
+		    <th>Id</th>
+		    <th>Name</th>
+		    <th>Url Key</th>
+		    <th>Image</th>
+			<!-- <th>Content</th> -->
+			<th>Type</th>
+		    <th>Status</th>
+		    <th>Creared At</th>
+		    <th>Updated At</th>
+		    <th></th>
+		    <th></th>
+	    </tr>
+    </thead>
+    <?php
+	$posts = $block->getPosts();
+	// $_objectManager = \Magento\Framework\App\ObjectManager::getInstance(); TODO: lay truc tiep
+	// $imageHelper  = $_objectManager->get('\Magento\Catalog\Helper\Image');
+    foreach ($posts as $post) {
+		//  $image_url = $imageHelper->init($post, 'product_thumbnail_image')
+		//  ->setImageFile($post->getFile())
+		//  ->resize(50, 50)->getUrl();
+    	echo "<tr style=\"border: 1px solid #dddddd; text-align: left; padding: 8px;\">";
+    	echo "<td>".$post->getId()."</td>";
+    	echo "<td>".$post->getName()."</td>";
+		echo "<td>".$post->getUrlKey()."</td>";
+    	echo "<td><img src='".$block->getImage_url($post)."'></td>";
+		// echo "<td>".$post->getContent()."</td>";
+    	echo "<td>".$post->getTypeId()."</td>";
+    	echo "<td>".$post->getStatus()."</td>";
+    	echo "<td>".$post->getCreatedAt()."</td>";
+    	echo "<td>".$post->getUpdatedAt()."</td>";
+    	// echo "<td>Edit</td>";
+		// echo "<td>Delete</td>";
+		echo "<td><a href='".$block->getBaseUrl()."blog/index/edit?post_id=".$post->getId()."'>Edit</a></td>";
+		
+    	echo "<td><a href='".$block->getBaseUrl()."blog/index/delete?post_id=".$post->getId()."'>Delete</a></td>";
+    	echo "</tr>";
+    }
+    ?>
+</table>

@@ -32,6 +32,8 @@ class Save extends \Magento\Backend\App\Action
         $this->resultRedirect = $this->resultRedirectFactory->create();
 		
         $data = $this->getRequest()->getPostValue();
+        print_r($data);
+    exit;
         $id = $data['entity_id'];  //TODO: lấy data trong primaryFieldName 
         $this->resultRedirect->setPath('*/*/listcus');
 

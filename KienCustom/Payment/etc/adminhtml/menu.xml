@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>	
+		<add id="KienCustom_Payment::kien" 
+      	title="Kien Payment" 
+      	translate="title" 
+      	module="KienCustom_Payment" 
+      	sortOrder="51" 
+      	dependsOnModule="KienCustom_Payment"
+      	resource="KienCustom_Payment::kien"/>
+
+        <add id="KienCustom_Payment::pay" 
+      	title="Kien: List Payment " 
+      	translate="title" 
+      	module="KienCustom_Payment" 
+      	parent="KienCustom_Payment::kien" 
+      	sortOrder="9"
+        action="changepw/index/listcus"
+      	dependsOnModule="KienCustom_Payment" 
+      	resource="KienCustom_Payment::pay"/>
+		  
+		<add id="KienCustom_Payment::admin" 
+      	title="Admin: List Payment " 
+      	translate="title" 
+      	module="KienCustom_Payment" 
+      	parent="KienCustom_Payment::kien" 
+      	sortOrder="9"
+        action="customer/index/index"
+      	dependsOnModule="KienCustom_Payment" 
+      	resource="KienCustom_Payment::admin"/>
+
+        
+        
+    </menu>
+</config>

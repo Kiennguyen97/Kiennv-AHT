@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>	
+		<add id="Kmodule_Post::kien2" 
+      	title="KienWidget" 
+      	translate="title" 
+      	module="Kmodule_Post" 
+      	sortOrder="51" 
+      	dependsOnModule="Kmodule_Post"
+      	resource="Kmodule_Post::kien2"/>
+
+        <add id="Kmodule_Post::post2" 
+      	title="Post2" 
+      	translate="title" 
+      	module="Kmodule_Post" 
+      	parent="Kmodule_Post::kien2" 
+      	sortOrder="9"
+        action="adminhtml/system_config/edit/section/newproductshow"
+      	dependsOnModule="Kmodule_Post" 
+      	resource="Kmodule_Post::post2"/>    
+    </menu>
+</config>
