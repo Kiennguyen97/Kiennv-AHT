@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
-	<widget id="Kmodule_products_list" class="Kmodule\Post\Block\ProductList" placeholder_image="Kmodule_Post::images/logo.png">
-		<label translate="true">KienProductList</label>
+	<widget id="Kmodule_products_list" class="Kmodule\Post\Block\Widget\ProductList" placeholder_image="Kmodule_Post::images/logo.png">
+		<label translate="true">Kiên ProductList</label>
 		<description>Kien Custom New Product</description>
 		<parameters>
 			<parameter name="title" xsi:type="text" required="false" visible="true">
 				<label translate="true">Title</label>
 			</parameter>
-			<parameter name="products_sort_by" xsi:type="select" visible="true" source_model="Kmodule\Post\Model\SortBy">
+			<parameter name="products_sort_by" xsi:type="select" visible="true" source_model="Kmodule\Post\Model\CustomModel\SortBy">
 				<label translate="true">Sort Products By</label>
 			</parameter>
-			<parameter name="products_sort_order" xsi:type="select" visible="true" source_model="Kmodule\Post\Model\SortOrder">
+			<parameter name="products_sort_order" xsi:type="select" visible="true" source_model="Kmodule\Post\Model\CustomModel\SortOrder">
 				<label translate="true">Sort Products Order</label>
 			</parameter>
 			<parameter name="show_pager" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
@@ -40,13 +40,16 @@
 			</parameter>
 		</parameters>
 	</widget>
-	<widget id="Kien_newProductlist" class="Magento\Catalog\Block\Product\Widget\NewWidget" is_email_compatible="true" placeholder_image="Magento_Catalog::images/product_widget_new.png">
-		<label translate="true">Kien New Products List</label>
-		<description translate="true">List of Products that are set as New</description>
+	<widget id="Kien_newProductlist" class="Kmodule\Post\Block\Widget\NewProductList" is_email_compatible="true" placeholder_image="Magento_Catalog::images/product_widget_new.png">
+		<label translate="true">Kiên NewProductsList</label>
+		<description translate="true">Kiên NewProduct</description>
 		<parameters>
+			<parameter name="title" xsi:type="text" required="false" visible="true">
+				<label translate="true">Title</label>
+			</parameter>
 			<parameter name="display_type" xsi:type="select" required="true" visible="true">
 				<label translate="true">Display Type</label>
-				<description translate="true">All products - recently added products, New products - products marked as new</description>
+				<description translate="true">New Product by ID</description>
 				<options>
 					<option name="default" value="all_products" selected="true">
 						<label translate="true">All products</label>
@@ -73,28 +76,20 @@
 			<parameter name="template" xsi:type="select" required="true" visible="true">
 				<label translate="true">Chọn kiểu hiển thị:</label>
 				<options>
-					<option name="default" value="product/widget/new/content/new_grid.phtml" selected="true">
-						<label translate="true">New Products Grid Template</label>
+					<option name="default" value="widget/newslider.phtml" selected="true">
+						<label translate="true">Kien-Slider</label>
 					</option>
-					<option name="list" value="product/widget/new/content/new_list.phtml">
-						<label translate="true">List</label>
-					</option>
-					<option name="list_default" value="product/widget/new/column/new_default_list.phtml">
-						<label translate="true">New Products Images and Names Template</label>
-					</option>
-					<option name="list_names" value="product/widget/new/column/new_names_list.phtml">
-						<label translate="true">New Products Names Only Template</label>
-					</option>
-					<option name="list_images" value="product/widget/new/column/new_images_list.phtml">
-						<label translate="true">New Products Images Only Template</label>
+					<option name="list" value="widget/newlist.phtml">
+						<label translate="true">Kien-List</label>
 					</option>
 				</options>
 			</parameter>
-			<parameter name="cache_lifetime" xsi:type="text" visible="true">
-				<label translate="true">Cache Lifetime (Seconds)</label>
-				<description translate="true">86400 by default, if not set. To refresh instantly, clear the Blocks HTML
-                    Output cache.
-				</description>
+			<parameter name="product_in_slide" xsi:type="text" required="true" visible="true">
+				<label translate="true">Number of Products per Slide:</label>
+				<depends>
+					<parameter name="template" value="widget/newslider.phtml" />
+				</depends>
+				<value>5</value>
 			</parameter>
 		</parameters>
 		<!-- <containers>

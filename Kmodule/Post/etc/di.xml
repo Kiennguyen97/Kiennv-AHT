@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Kmodule\Post\Api\NewProductRepositoryInterface" type="Kmodule\Post\Model\NewProductRepository"/>
+    <preference for="Kmodule\Post\Api\Data\NewProductInterface" type="Kmodule\Post\Model\NewProduct"/>
+    <preference for="Kmodule\Post\Api\Data\NewProductSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <virtualType name="NewProductsGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Kmodule\Post\Model\ResourceModel\NewProduct\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">NewProductsGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="NewProductsGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="newproduct_listing_data_source" xsi:type="string">Kmodule\Post\Model\ResourceModel\NewProduct\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Kmodule\Post\Model\ResourceModel\NewProduct\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">kmodule_post_newproduct</argument>
+            <argument name="resourceModel" xsi:type="string">Kmodule\Post\Model\ResourceModel\NewProduct\Collection</argument>
+        </arguments>
+    </virtualType>
+</config>

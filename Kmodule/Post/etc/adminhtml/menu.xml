@@ -15,7 +15,7 @@
       	module="Kmodule_Post" 
       	parent="Kmodule_Post::kien2" 
       	sortOrder="9"
-        action="adminhtml/system_config/edit/section/newproductshow"
+        action="post2/index/index"
       	dependsOnModule="Kmodule_Post" 
       	resource="Kmodule_Post::post2"/>    
     </menu>
