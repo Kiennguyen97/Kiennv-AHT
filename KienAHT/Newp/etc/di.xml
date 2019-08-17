@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="KienAHT\Newp\Api\NewproRepositoryInterface" type="KienAHT\Newp\Model\NewproRepository"/>
+    <preference for="KienAHT\Newp\Api\Data\NewproInterface" type="KienAHT\Newp\Model\Newpro"/>
+    <preference for="KienAHT\Newp\Api\Data\NewproSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <virtualType name="NewprosGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">KienAHT\Newp\Model\ResourceModel\Newpro\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">NewprosGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="NewprosGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="newp_listing_data_source" xsi:type="string">KienAHT\Newp\Model\ResourceModel\Newpro\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="KienAHT\Newp\Model\ResourceModel\Newpro\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">kienaht_newp_newpro</argument>
+            <argument name="resourceModel" xsi:type="string">KienAHT\Newp\Model\ResourceModel\Newpro\Collection</argument>
+        </arguments>
+    </virtualType>
+</config>

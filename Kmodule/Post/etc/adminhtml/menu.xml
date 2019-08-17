@@ -1,22 +1,24 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>	
-		<add id="Kmodule_Post::kien2" 
-      	title="KienWidget" 
+		<add id="Kmodule_Post::newproduct1" 
+      	title="KienNew" 
       	translate="title" 
       	module="Kmodule_Post" 
       	sortOrder="51" 
-      	dependsOnModule="Kmodule_Post"
-      	resource="Kmodule_Post::kien2"/>
+      	dependsOnModule="Kmodule_Post" 
+      	resource="Kmodule_Post::newproduct1"/>
 
-        <add id="Kmodule_Post::post2" 
-      	title="Post2" 
+        <add id="Kmodule_Post::newproduct2" 
+      	title="NewProductList" 
       	translate="title" 
       	module="Kmodule_Post" 
-      	parent="Kmodule_Post::kien2" 
-      	sortOrder="9"
-        action="post2/index/index"
+      	parent="Kmodule_Post::newproduct1" 
+      	sortOrder="10" 
       	dependsOnModule="Kmodule_Post" 
-      	resource="Kmodule_Post::post2"/>    
+      	action="post2/index/index" 
+      	resource="Kmodule_Post::newproduct2"/>
+
+        
     </menu>
 </config>

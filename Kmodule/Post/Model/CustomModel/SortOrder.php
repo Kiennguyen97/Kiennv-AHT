@@ -1,5 +1,5 @@
 <?php
-namespace Kmodule\Post\Model;
+namespace Kmodule\Post\Model\CustomModel;
  
 class SortOrder implements \Magento\Framework\Option\ArrayInterface
 {
