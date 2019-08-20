@@ -8,7 +8,7 @@ class AddButton extends GenericButton implements ButtonProviderInterface
     public function getButtonData()
     {
         return [
-            'label' => __('Add'),
+            'label' => __('Add New Product'),
             'class' => 'action-secondary',
             'on_click' => sprintf("location.href= '%s';", $this->getAddUrl()),
             'sort_order' => 10

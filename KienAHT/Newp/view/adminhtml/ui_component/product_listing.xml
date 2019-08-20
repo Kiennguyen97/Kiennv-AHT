@@ -7,40 +7,23 @@
 -->
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
-        <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">product_listing.product_listing_data_source</item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="string">KienAHT\Newp\Block\Adminhtml\Newpro\Edit\BackButton</item>
         </item>
     </argument>
-    <settings>
-        <spinner>product_columns</spinner>
-        <deps>
-            <dep>product_listing.product_listing_data_source</dep>
-        </deps>
-    </settings>
-    <dataSource name="product_listing_data_source" component="Magento_Ui/js/grid/provider">
-        <settings>
-            <storageConfig>
-                <param name="dataScope" xsi:type="string">filters.store_id</param>
-            </storageConfig>
-            <updateUrl path="mui/index/render"/>
-        </settings>
-        <aclResource>Magento_Catalog::products</aclResource>
-        <dataProvider class="Magento\Catalog\Ui\DataProvider\Product\ProductDataProvider" name="product_listing_data_source">
-            <settings>
-                <requestFieldName>id</requestFieldName>
-                <primaryFieldName>entity_id</primaryFieldName>
-            </settings>
-        </dataProvider>
-    </dataSource>
     <listingToolbar name="listing_top">
-        <massaction name="listing_massaction"
-                    component="Magento_Ui/js/grid/tree-massactions"
-                    class="\Magento\Catalog\Ui\Component\Product\MassAction">
-            <action>
-
+        <massaction name="listing_massaction">
+            <action name="addnewproduct">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure to add New Product to selected customers?</message>
+                        <title translate="true">Add new Product</title>
+                    </confirm>
+                    <url path="newp/index/add"/>
+                    <type>addnewproduct</type>
+                    <label translate="true">Add new Product</label>
+                </settings>
             </action>
         </massaction>
-        <paging name="listing_paging"/>
     </listingToolbar>
-    
 </listing>

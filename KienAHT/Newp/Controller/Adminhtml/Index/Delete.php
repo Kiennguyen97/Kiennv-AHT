@@ -38,7 +38,7 @@ class Delete extends \Magento\Backend\App\Action
 
         try{
             $contact->delete();
-            $this->messageManager->addSuccess(__('Your contact has been deleted !'));
+            $this->messageManager->addSuccess(__('Your NewProduct has been deleted !'));
         }
         catch(\Exception $e)
         {

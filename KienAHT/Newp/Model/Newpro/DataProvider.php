@@ -18,6 +18,7 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         array $data = []
     ){
         $this->collection = $contactCollectionFactory->create();
+        
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
 
@@ -36,4 +37,14 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 
         return $this->_loadedData;
     }
+    // public function addFilter(\Magento\Framework\Api\Filter $filter)
+    // {
+    //     $field = $filter->getField();
+
+    //     if (in_array($field, ['id','name'])) {
+    //         $filter->setField($field);
+    //     }
+
+    //     parent::addFilter($filter);
+    // }
 }
