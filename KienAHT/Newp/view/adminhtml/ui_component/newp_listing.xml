@@ -8,7 +8,7 @@
         </item>
 
         <item name="spinner" xsi:type="string">newp_columns</item>
-
+        <!-- TODO: button -->
         <item name="buttons" xsi:type="array">
             <item name="add" xsi:type="string">KienAHT\Newp\Block\Adminhtml\Newpro\Edit\AddButton</item>
             <!-- <item name="add" xsi:type="array">
@@ -46,6 +46,19 @@
         <exportButton name="export_button"/>
         <!-- <filterSearch name="fulltext"/> -->
         <filters name="listing_filters"/>
+        <massaction name="listing_massaction">
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Delete selected items?</message>
+                        <title translate="true">Delete items</title>
+                    </confirm>
+                    <url path="newp/index/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+        </massaction>
         <paging name="listing_paging"/>
     </listingToolbar>
     <!-- khai báo các cột của Grid -->

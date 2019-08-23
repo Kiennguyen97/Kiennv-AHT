@@ -16,7 +16,9 @@
             <action name="addnewproduct">
                 <settings>
                     <confirm>
-                        <message translate="true">Are you sure to add New Product to selected customers?</message>
+                        <message translate="true">Are you sure to add New Product to selected customers?
+                            Please select Product is Configurable Product !!
+                        </message>
                         <title translate="true">Add new Product</title>
                     </confirm>
                     <url path="newp/index/add"/>
