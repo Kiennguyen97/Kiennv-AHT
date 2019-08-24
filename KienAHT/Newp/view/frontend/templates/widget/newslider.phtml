@@ -55,10 +55,35 @@ if ($exist = ($block->getProductCollection() && $block->getProductCollection()->
 ?>
 
 <style>
+    .prev:hover, .next:hover {
+        background-color: rgba(0,0,0,0.8);
+    }
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: red;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+    }
+
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
     * {
         box-sizing: border-box;
     }
-
+    .kien-block{
+        position: relative;
+        z-index: 98;
+    }
     body {
         font-family: Verdana, sans-serif;
     }
@@ -135,11 +160,11 @@ if ($exist = ($block->getProductCollection() && $block->getProductCollection()->
 </style>
 
 <?php if ($exist) : ?>
-<div class="block widget block-new-products <?= $mode ?>">
+<div class=" block widget block-new-products <?= $mode ?>">
     <div class="block-title">
         <strong role="heading" aria-level="2"><?= $title ?></strong>
     </div>
-    <div class="block-content">
+    <div class="block-content kien-block">
         <div class="slideshow-container products-<?= $mode ?> <?= $mode ?>">
             <?php for ($i = 0; $i < $numpage; $i++) : ?>
             <div class="mySlides fade">
@@ -236,6 +261,8 @@ if ($exist = ($block->getProductCollection() && $block->getProductCollection()->
                 </ol>
             </div>
             <?php endfor ?>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
         <br>
 
@@ -272,6 +299,31 @@ if ($exist = ($block->getProductCollection() && $block->getProductCollection()->
         }
         slides[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " active";
-        setTimeout(showSlides, 5000); 
+        setTimeout(showSlides, 7000); 
+    }
+    showSlidesz(slideIndexz);
+
+    function plusSlides(n) {
+      showSlidesz(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlidesz(slideIndex = n);
+    }
+
+    function showSlidesz(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
     }
 </script>
