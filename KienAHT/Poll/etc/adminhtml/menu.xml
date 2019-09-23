@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>	
+		<add id="KienAHT_Poll::poll" 
+      	title="Polls" 
+      	translate="title" 
+      	module="KienAHT_Poll" 
+      	sortOrder="51" 
+      	dependsOnModule="KienAHT_Poll" 
+      	resource="KienAHT_Poll::poll"/>
+
+        <add id="KienAHT_Poll::listquestion" 
+      	title="List Questions" 
+      	translate="title" 
+      	module="KienAHT_Poll" 
+      	parent="KienAHT_Poll::poll" 
+      	sortOrder="10" 
+      	dependsOnModule="KienAHT_Poll" 
+      	action="#" 
+      	resource="KienAHT_Poll::listquestion"/>
+		<add id="KienAHT_Poll::listanswer" 
+      	title="List Answers" 
+      	translate="title" 
+      	module="KienAHT_Poll" 
+      	parent="KienAHT_Poll::poll" 
+      	sortOrder="11" 
+      	dependsOnModule="KienAHT_Poll" 
+      	action="#" 
+      	resource="KienAHT_Poll::listanswer"/>
+
+		<add id="KienAHT_Poll::cus_answer" 
+      	title="List Customer Answer" 
+      	translate="title" 
+      	module="KienAHT_Poll" 
+      	parent="KienAHT_Poll::poll" 
+      	sortOrder="12" 
+      	dependsOnModule="KienAHT_Poll" 
+      	action="#" 
+      	resource="KienAHT_Poll::cus_answer"/>
+		
+    </menu>
+</config>

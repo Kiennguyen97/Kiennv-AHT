@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="KienAHT\Poll\Api\QuestionRepositoryInterface" type="KienAHT\Poll\Model\QuestionRepository"/>
+    <preference for="KienAHT\Poll\Api\Data\QuestionInterface" type="KienAHT\Poll\Model\Question"/>
+    <preference for="KienAHT\Poll\Api\Data\QuestionSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    
+    <preference for="KienAHT\Poll\Api\AnswerRepositoryInterface" type="KienAHT\Poll\Model\AnswerRepository"/>
+    <preference for="KienAHT\Poll\Api\Data\AnswerInterface" type="KienAHT\Poll\Model\Question"/>
+    <preference for="KienAHT\Poll\Api\Data\AnswerSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    
+    <preference for="KienAHT\Poll\Api\QuestionRepositoryInterface" type="KienAHT\Poll\Model\QuestionRepository"/>
+    <preference for="KienAHT\Poll\Api\Data\QuestionInterface" type="KienAHT\Poll\Model\Question"/>
+    <preference for="KienAHT\Poll\Api\Data\QuestionSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <virtualType name="QuestionsGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">KienAHT\Poll\Model\ResourceModel\Question\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">QuestionsGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="QuestionsGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="KienAHT\Poll\Model\ResourceModel\Question\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">aht_blog_contact</argument>
+            <argument name="resourceModel" xsi:type="string">KienAHT\Poll\Model\ResourceModel\Question\Collection</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="kienpoll_question_listing_data_source" xsi:type="string">KienAHT\Poll\Model\ResourceModel\Question\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    
+</config>
